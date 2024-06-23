@@ -20,25 +20,17 @@ export default function FlightBook()
         trip:location.state.trip,
     });
 
-    // const[desFrom,setDesFrom]=useState(location.state.desFrom);
-    // const[desTo,setDesTo]=useState(location.state.desTo);
-    // const[traveler,setTraveler]=useState(location.state.traveler);
-    // const[dateFrom,setDateFrom]=useState(location.state.dateFrom);
-    // const[dateTo,setDateTo]=useState(location.state.dateTo);
-    // const[cla,setCla]=useState(location.state.cla);
-    // const[trip,setTrip]=useState(location.state.trip);
-
-    //setFlightData(desFrom)
-    //console.log(flightData.desFrom+flightData.desTo);
-
+    
     const[data,setData] = useState([])
     useEffect(()=>{fetchData()},[]) 
-
+    
     const fetchData = async () => { 
         const desFrom = flightData.desFrom;
         const desTo = flightData.desTo;
         const cla = flightData.cla;
-    
+        
+        console.log(desFrom+desTo+cla)
+        
         const res = await axios.post(`http://localhost:3000/seFlightData`,{desFrom,desTo,cla})
         //.then(mb => setData(mb.data) ).catch(er => console.log(er))
         setData(res.data)
@@ -46,9 +38,9 @@ export default function FlightBook()
     }
     
     
-
+    
     //fetchData();
-
+    
     const flightPanel = data.map(i=>{return(
         <div className="bg-Scolor text-Fcolor rounded-2xl font-work my-10">
             <div className="flex flex-wrap p-5 justify-around gap-x-40 items-center">
@@ -101,7 +93,7 @@ export default function FlightBook()
             </div>
         </div>
     )})
-
+    
     return(
         <div className="px-20">
             <Nav/>
@@ -114,3 +106,13 @@ export default function FlightBook()
         </div>
     )
 }
+// const[desFrom,setDesFrom]=useState(location.state.desFrom);
+// const[desTo,setDesTo]=useState(location.state.desTo);
+// const[traveler,setTraveler]=useState(location.state.traveler);
+// const[dateFrom,setDateFrom]=useState(location.state.dateFrom);
+// const[dateTo,setDateTo]=useState(location.state.dateTo);
+// const[cla,setCla]=useState(location.state.cla);
+// const[trip,setTrip]=useState(location.state.trip);
+
+//setFlightData(desFrom)
+//console.log(flightData.desFrom+flightData.desTo);

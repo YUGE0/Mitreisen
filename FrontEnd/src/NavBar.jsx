@@ -40,18 +40,18 @@ export default function Nav()
             <div className="flex text-Scolor ml-64 w-[30%] justify-around items-center">
                 <Link to={"/"}>Home</Link>
                 <Link to={"/About"}>About</Link>
-                <select value={currentDst} onChange={e => setDst(e.target.value)} className="rounded bg-transparent">
-                    <option className="bg-Tcolor">Destinations</option>
-                    <option value={"Amd"} className="bg-Fcolor">Ahmedabad</option>
-                    <option value={"Bom"} className="bg-Fcolor">Mumbai</option>
-                    <option value={"Leh"} className="bg-Fcolor">Leh</option>
-                    <option value={"Sim"} className="bg-Fcolor">Simla</option>
-                    <option value={"Krl"} className="bg-Fcolor">Kerala</option>
-                    {/* {currentDst===`${currentDst}` && handelNav()} */}
-                    {/* {currentDst==="Back" && navigate("/")} */}
-                </select>
             </div>
             {!currentLogin ? <button onClick={handelClick} className=" h-fit w-fit p-2 px-6 rounded-lg text-Scolor bg-Tcolor hover:bg-Scolor hover:text-Fcolor">Login</button> : null}
         </div>
     )
 }
+// {/* <select value={currentDst} onChange={e => setDst(e.target.value)} className="rounded bg-transparent">
+//                     <option className="bg-Tcolor">Destinations</option>
+//                     <option value={"Amd"} className="bg-Fcolor">Ahmedabad</option>
+//                     <option value={"Bom"} className="bg-Fcolor">Mumbai</option>
+//                     <option value={"Leh"} className="bg-Fcolor">Leh</option>
+//                     <option value={"Sim"} className="bg-Fcolor">Simla</option>
+//                     <option value={"Krl"} className="bg-Fcolor">Kerala</option>
+//                     {/* {currentDst===`${currentDst}` && handelNav()} */}
+//                     {/* {currentDst==="Back" && navigate("/")} */}
+// </select> */}

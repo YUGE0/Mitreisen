@@ -16,13 +16,13 @@ const {sendNewsLEmail} = require("./Services/NewLetter");
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect("mongodb://127.0.0.1:27017/Trip")
-  .then(() => {
-    console.log("Mongo Connected");
-  })
-  .catch((e) => {
-    console.log("Failed connecting database" + e);
-  });
+const URI = process.env.MONGODB;
+mongoose.connect(URI)
+.then(() => console.log("Connected to database"))
+.catch((error) => {
+  console.error("Error connecting to MongoDB Atlas:", error);
+  process.exit(1); // Optional: Exit on connection failure
+});
 //import schema
 const Flight = require("./model/Flight");
 const Train = require("./model/train");
@@ -36,7 +36,14 @@ const Signup = require("./model/signup");
 
 //Flight
 app.get("/getFlightData", async (req, res) => {
-  Flight.find().then(member => res.json(member)).catch(er => res.json(er))
+  try {
+    const flights = await Flight.find();
+    res.json(flights)
+    console.log(flights)
+  } catch (error) {
+    console.error("Error retrieving flight data:", error);
+    res.status(500).json({ message: "Error fetching flight data" });
+  }
 });
 app.post("/addFlightData", async (req, res) => {
     const {fname,desFrom,desTo,departure,arrival,cla,services,duration,price,url} = req.body;
@@ -67,13 +74,17 @@ app.delete("/delFlightData", async (req, res) => {
       res.status(500).json({ error: "Failed to delete team. Please try again later." });
     }
 });
-app.post('/seFlightData', async (req, res) => { 
+app.post("/seFlightData", async (req, res) => { 
+  console.log("Here")
   const {desFrom, desTo, cla} = req.body;
-  //console.log(req.body);
-  const data = await Flight.find({desFrom,desTo,cla})
-  //.then(member => res.json(member)).catch(er => res.json(er))
-  console.log("it is called"+data)
-  res.send(data)
+  console.log(req.body);
+  try {
+    const data = await Flight.find({ desFrom, desTo, cla });
+    res.send(data);
+  } catch (error) {
+    console.error("Error fetching flight data:", error);
+    res.status(500).json({ message: "Error retrieving flight data" });
+  }
 });
 
 
@@ -113,6 +124,11 @@ app.delete("/delTrainData", async (req, res) => {
 app.post('/seTrainData', async (req, res) => { 
   const {desFrom, desTo, cla} = req.body;
   //console.log(req.body);
+  try {
+    
+  } catch (error) {
+    
+  }
   const data = await Train.find({desFrom,desTo,cla})
   //.then(member => res.json(member)).catch(er => res.json(er))
   console.log("it is called"+data)
