@@ -39,7 +39,7 @@ app.get("/getFlightData", async (req, res) => {
   try {
     const flights = await Flight.find();
     res.json(flights)
-    console.log(flights)
+    //console.log(flights)
   } catch (error) {
     console.error("Error retrieving flight data:", error);
     res.status(500).json({ message: "Error fetching flight data" });
@@ -181,7 +181,12 @@ app.post('/seHotelData', async (req, res) => {
 
 //Destination
 app.get("/getDestinationData", async (req, res) => {
-  Destination.find().then(member => res.json(member)).catch(er => res.json(er))
+  Destination.find()
+  .then(member => res.json(member))
+  .catch(error => {
+    console.error(error); // Log the error for debugging
+    res.status(500).json({ message: "Error fetching destinations" }); // Send a generic error response to client
+  });
 });
 app.post("/addDestinationData", async (req, res) => {
   const {fname,about,aboutext,location,bg,imgo,imgs,imgc,price} = req.body;

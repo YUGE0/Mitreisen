@@ -10,8 +10,12 @@ export default function Dest(){
     useEffect(()=>{fetchData()},[]) 
 
     const fetchData = async () => { 
-        
-        axios.get(`http://localhost:3000/getDestinationData`).then(mb => setDes(mb.data)).catch(er => console.log(er))
+        try {
+            const response = await axios.get(`http://localhost:3030/getDestinationData`);
+            setDes(response.data);
+          } catch (error) {
+            console.error("Error fetching data:", error);
+          }
 
     }
 
