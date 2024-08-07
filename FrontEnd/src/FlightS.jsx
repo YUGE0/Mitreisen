@@ -66,8 +66,8 @@ export default function FlightS(prop){
                       </div>
                     }
                     <div>
-                        <h1 className=" font-medium ">Class</h1>
-                        <select value={cla} name="cl" onChange={(e)=> setCla(e.target.value)} className=" bg-transparent text-Tcolor">
+                        <h1 className="font-medium ">Class</h1>
+                        <select value={cla} name="cl" onChange={(e)=> setCla(e.target.value)} className="bg-transparent text-Tcolor w-48">
                             <option className=" bg-Fcolor text-Scolor">Select</option>
                             <option className=" bg-Fcolor text-Scolor">Business</option>
                             <option className=" bg-Fcolor text-Scolor">Economy</option>

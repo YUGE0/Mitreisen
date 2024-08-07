@@ -16,7 +16,7 @@ const {sendNewsLEmail} = require("./Services/NewLetter");
 app.use(cors());
 app.use(bodyParser.json());
 
-const URI = process.env.MONGODB;
+const URI = process.env.MONGODBCL;
 mongoose.connect(URI)
 .then(() => console.log("Connected to database"))
 .catch((error) => {
@@ -75,9 +75,9 @@ app.delete("/delFlightData", async (req, res) => {
     }
 });
 app.post("/seFlightData", async (req, res) => { 
-  console.log("Here")
+  //console.log("Here")
   const {desFrom, desTo, cla} = req.body;
-  console.log(req.body);
+  //console.log(req.body);
   try {
     const data = await Flight.find({ desFrom, desTo, cla });
     res.send(data);
