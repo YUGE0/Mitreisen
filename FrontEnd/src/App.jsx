@@ -30,7 +30,7 @@ function App()
     setIsAdminIn(type);
   }, []);
 
-  console.log(isAdminIn);
+  //console.log(isAdminIn);
 
 
   //const [currentForm , setForm] = useState("login"); 

@@ -6,15 +6,15 @@ export default function Card(props){
     const navigate = useNavigate()
 
     return(
-        <div className="w-fit py-8 font-work">
-            <img className=" h-40" src={props.info.imgc}/>
-            <div className="bg-Scolor text-Fcolor p-2 flex flex-col gap-4">
-                 <div className="">
+        <div className="w-fit py-8 font-work rounded-xl ">
+            <img className="h-44" src={props.info.imgc}/>
+            <div className="bg-Scolor text-Fcolor h-52 p-2 flex flex-col">
+                 <div className="h-52 p-2">
                      <h1 className="font-semibold text-3xl">{props.info.fname}</h1>
                      <li className="list-image-[url(Location.svg)] text-Tcolor font-normal text-sm">{props.info.location}</li>
                      <h2 className="text-Tcolor font-normal text-pretty text-sm w-60">{props.info.about}</h2>
                 </div>
-                <div className="flex p-2 justify-around">
+                <div className="flex p-2 justify-between">
                     <div className="flex items-baseline">
                         <h1 className="font-semibold text-xl">{props.info.price}/</h1>
                         <p className="text-xs">per person</p>

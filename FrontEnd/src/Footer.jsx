@@ -1,7 +1,14 @@
-import React from "react";
+import {React,useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 
 export default function Footer(){
+    const [isAdminIn, setIsAdminIn] = useState(false);
+  
+  useEffect(() => {
+    const type = localStorage.getItem("userType");
+    setIsAdminIn(type);
+    console.log(type);
+  }, []);
     return(
         <div className="font-open">
             <div className="bg-Tcolor h-fit p-8">
@@ -9,7 +16,7 @@ export default function Footer(){
                 <div className="flex flex-wrap justify-around items-start">
                     <div className="">
                         <div className="p-10"><h1 className="text-Fcolor text-3xl font-bold">Unveiling Exquisite Adventures</h1><h2 className="font-light text-lg">Explore, Experience, and Elevate Your Journeys with Us.</h2></div>
-                        <div className="p-10 flex flex-wrap flex-col"><h1 className="text-Fcolor text-3xl font-bold">Contact Us</h1><a className="font-light text-lg">Email</a><a className="font-light text-lg">Address</a></div>
+                        <div className="p-10 flex flex-wrap flex-col"><h1 className="text-Fcolor text-3xl font-bold">Contact Us</h1><a className="font-light text-lg">Email</a><a className="font-light text-lg">Address</a>{isAdminIn==="Admin"?<Link to={"/Admin"}>Admin</Link>:null}</div>
                     </div>
                     <div className="flex flex-wrap">
                         <div className="flex flex-wrap flex-col w-fit p-10">
